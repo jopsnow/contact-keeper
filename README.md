@@ -12,12 +12,6 @@ Contact Keeper app based on Brad Traversy's course React Front To Back 2019
 - Move all references of `process.env` to something like `config/index.js` or something else.
 - Why does the JWT token always say "Invalid Signature" when checked at https://jwt.io ? Brad's does the same
 
-## Notes
-
-- Brad uses `config` package allows us to create a `config/default.json` file. Anything we put here will be available in all our app. https://github.com/lorenwest/node-config -- but then Brad commits this to GitHub :/
-- I'm using `dotenv` to put the MongoDB user/password into `.env` file and not publish to GH. Not sure why Brad shows his followers to publish things like passwords and secret keys.
-
-
 ## Outline
 
 - Two different `package.json` files for client and server
@@ -54,14 +48,13 @@ curl localhost:5000/api/contacts/1 -X PUT
 
 ## Errors/Warnings Log with solutions
 - mongoose
-ERRORS
-DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
+--DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
 https://github.com/Automattic/mongoose/issues/8156
 
-DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+--DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
 https://github.com/Automattic/mongoose/issues/6890
 
 - express validator
-requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
+--requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
 https://express-validator.github.io/docs/sanitization.html
 
