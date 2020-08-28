@@ -17,7 +17,6 @@ Contact Keeper app based on Brad Traversy's course React Front To Back 2019
 - Brad uses `config` package allows us to create a `config/default.json` file. Anything we put here will be available in all our app. https://github.com/lorenwest/node-config -- but then Brad commits this to GitHub :/
 - I'm using `dotenv` to put the MongoDB user/password into `.env` file and not publish to GH. Not sure why Brad shows his followers to publish things like passwords and secret keys.
 
-## Questions
 
 ## Outline
 
@@ -46,84 +45,23 @@ curl localhost:5000/api/contacts
 curl localhost:5000/api/contacts/1 -X PUT
 ```
 
-- uninstall `config` and install `dotenv`. set the DB user/pass in `.env` and test DB connection to MongoDB.
+- Create `config` folder then create 2 config files within this folder
+  - `default.json` - for global variables (this is a part of `config` package)
+  - `db.js` - connect to database (mongoose)
 - Add `User` mongoose model.
-- Add validation for name, email, password using `express-validator`. I'm using v6 so I had to make some changes from Brad's using v5.
+- Add validation for name, email, password using `express-validator`
 - Use User model to check MongoDB if user exists, or create new instance of User model, hash the password, and save to DB.
-- Authenticate route
-- Auth middleware -- extracts the user info from the token, and add the userid to req object
-- `Contact` model.
-  - Get contacts & Add contact (GET & POST)
-- Adding the Update & Delete routes. (PUT/DELETE) - but I discovered some errors that will need to be fixed.
 
-  - the attempt to return the 404 will never get called. Server error instead.
+## Errors/Warnings Log with solutions
+- mongoose
+ERRORS
+DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
+https://github.com/Automattic/mongoose/issues/8156
 
-- Setting up the client part
-  - `npx create-react-app client`
-  - add 3 scripts to the **server**
-    - `server/package.json`:
+DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+https://github.com/Automattic/mongoose/issues/6890
 
-```json
-"client": "npm start --prefix client",
-"clientinstall": "npm install --prefix client",
-"dev": "concurrently \"npm run server\" \"npm run client\"",
-```
+- express validator
+requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
+https://express-validator.github.io/docs/sanitization.html
 
-- add `proxy` to the **client**
-  - `client/package.json`:
-
-```json
-"proxy": "http://localhost:5000"
-```
-
-- clean up the `client` directory -- we don't need a separate `README.md`, `.git`, `.gitignore` etc.
-- Delete from `client` dire:
-  - README.md
-  - .git -- directory / but mine didn't come with the CRA
-  - .gitignore
-- Install these in the **client** directory
-  - `cd client`
-    - `npm install axios react-router-dom uuid react-transition-group`
-  - copy in the new `App.css` file from Brad. (this one has some different styles than the one used in GitHub Finder)
-- add FontAwesome 
-- navigation and placeholder pages: Home + About
-- Contact Context
-- `Contacts` and `ContactItem` components with dummy data - but styled in UI with buttons
-- create Contact Form, and addContact reducer/function to add new user on front end only
-- Delete contact functionality
-- `setCurrent` and `clearCurrent` functionalities -- added to 'Edit' and 'Delete' buttons
-- Update contact record functionality
-- Filter contact records functionality
-- CSS Transitions for fade-in and fade-out of contact records
-- `AuthContext` and initial state
-- `Login` and `Register` components and links in Navbar
-- `Alerts` -- context and components.  Added and tested on Register component
-- User Registration - with check/alert if user already exits
-- Authentication -- load user and set token.  Works with Register component only.  Can refresh page and token/user info still in state
-- Login - functionality, similar to register.  Displays error on failed login or redirects and set user info in state on valid login
-- Navbar - dynamic links for authenticated or guest user.
-- Logout functionality and link in Nabar
-- `PrivateRoute` component to redirect on pages that should require to be logged in
-- AddContact to now use our API backend and store to MongoDB instead of our temp hardcoded local data
-- Get Contacts, Loading Spinner, move the ContactFilter to other file, some fixes, and Clear Contacts
-- Fix DeleteContact now to work with MongoDB backend.  And some other UI fixes
-- fixed an issue that page refresh kept redirecting to Login page - was an error with the `loading: false` default state.
-- modify the Delete and Update contact options to work with the API/MongoDB now (instead of the hardcoded temp records we had)
-- lots of other fixes and things
-- prep app for production deployment with Heroku
-server package.json
-```
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix=client && npm run build --prefix client"
-```
-server.js
-```javascript
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  );
-}
-```
