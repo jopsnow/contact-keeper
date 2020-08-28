@@ -47,14 +47,14 @@ curl localhost:5000/api/contacts/1 -X PUT
 - Use User model to check MongoDB if user exists, or create new instance of User model, hash the password, and save to DB.
 
 ## Errors/Warnings Log with solutions
-- mongoose
---DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
+### mongoose
+- DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
 https://github.com/Automattic/mongoose/issues/8156
 
---DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+- DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
 https://github.com/Automattic/mongoose/issues/6890
 
-- express validator
---requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
+### express validator
+- requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
 https://express-validator.github.io/docs/sanitization.html
 
