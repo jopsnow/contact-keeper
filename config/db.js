@@ -6,16 +6,15 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-const connectDB = () => {
-    mongoose.connect(db, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }).then(() => {
+const connectDB = async () => {
+    try {
+        await mongoose.connect(db);
         console.log('MongoDB Connected');
-    }).catch(err => {
+    } catch (error) {
         console.log(err.message);
         process.exit(1);
-    });
+    }
+    
 };
 
 module.exports = connectDB;

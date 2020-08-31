@@ -1,5 +1,4 @@
 {
     "mongoURI": "mongodb+srv://user1:Srb3vNriZ7xN4TLN@contactkeeper.reoqa.mongodb.net/test?retryWrites=true&w=majority",
     "jwtSecret": "s3cr3t"
-
 }
