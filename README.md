@@ -47,6 +47,9 @@ curl localhost:5000/api/contacts/1 -X PUT
 - Use User model to check MongoDB if user exists, or create new instance of User model, hash the password, and save to DB.
 - Authenticate route
 - Auth middleware -- extracts the user info from the token, and add the userid to req object
+- `Contact` model.
+  - Get contacts & Add contact (GET & POST)
+- Adding the Update & Delete routes. (PUT/DELETE)
 
 ## Errors/Warnings Log with solutions
 ### mongoose
@@ -56,7 +59,8 @@ https://github.com/Automattic/mongoose/issues/8156
 - DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
 https://github.com/Automattic/mongoose/issues/6890
 
-- (intermediate value).select is not a function
+- DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated.
+https://github.com/Automattic/mongoose/issues/8886
 
 
 ### express validator
