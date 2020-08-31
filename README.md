@@ -51,6 +51,26 @@ curl localhost:5000/api/contacts/1 -X PUT
   - Get contacts & Add contact (GET & POST)
 - Adding the Update & Delete routes. (PUT/DELETE)
 
+- Setting up the client part
+  - `npx create-react-app client`
+  - add 3 scripts to the **server**
+    - `server/package.json`:
+
+```json
+"client": "npm start --prefix client",
+"clientinstall": "npm install --prefix client",
+"dev": "concurrently \"npm run server\" \"npm run client\"",
+```
+
+- add `proxy` to the **client**
+  - `client/package.json`:
+
+```json
+"proxy": "http://localhost:5000"
+```
+
+- clean up the `client` directory -- we don't need a separate `README.md`, `.git`, `.gitignore` etc.
+
 ## Errors/Warnings Log with solutions
 ### mongoose
 - DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version.
