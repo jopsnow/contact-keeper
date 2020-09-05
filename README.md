@@ -70,6 +70,19 @@ curl localhost:5000/api/contacts/1 -X PUT
 ```
 
 - clean up the `client` directory -- we don't need a separate `README.md`, `.git`, `.gitignore` etc.
+- Delete from `client` dire:
+  - README.md
+  - .git -- directory / but mine didn't come with the CRA
+  - .gitignore
+- Install these in the **client** directory
+  - `cd client`
+    - `npm install axios react-router-dom uuid react-transition-group`
+  - copy in the new `App.css` file from Brad. (this one has some different styles than the one used in GitHub Finder)
+- add FontAwesome 
+- navigation and placeholder pages: Home + About
+- Contact Context
+- `Contacts` and `ContactItem` components with dummy data - but styled in UI with buttons
+- create Contact Form, and addContact reducer/function to add new user on front end only
 
 ## Errors/Warnings Log with solutions
 ### mongoose
@@ -86,4 +99,8 @@ https://github.com/Automattic/mongoose/issues/8886
 ### express validator
 - requires to express-validator/check are deprecated.You should just use require("express-validator")  instead.
 https://express-validator.github.io/docs/sanitization.html
+
+### other modules
+- Attempted import error: 'uuid' does not contain a default export (imported as 'uuid') 
+https://stackoverflow.com/questions/60830848/attempted-import-error-uuid-does-not-contain-a-default-export-imported-as-u
 
