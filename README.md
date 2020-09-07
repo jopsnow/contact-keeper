@@ -83,6 +83,11 @@ curl localhost:5000/api/contacts/1 -X PUT
 - Contact Context
 - `Contacts` and `ContactItem` components with dummy data - but styled in UI with buttons
 - create Contact Form, and addContact reducer/function to add new user on front end only
+- Delete contact functionality
+- `setCurrent` and `clearCurrent` functionalities -- added to 'Edit' and 'Delete' buttons
+- Update contact record functionality
+- Filter contact records functionality
+- CSS Transitions for fade-in and fade-out of contact records
 
 ## Errors/Warnings Log with solutions
 ### mongoose
