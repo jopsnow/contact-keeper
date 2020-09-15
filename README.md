@@ -97,6 +97,11 @@ curl localhost:5000/api/contacts/1 -X PUT
 - Navbar - dynamic links for authenticated or guest user.
 - Logout functionality and link in Nabar
 - `PrivateRoute` component to redirect on pages that should require to be logged in
+- AddContact to now use our API backend and store to MongoDB instead of our temp hardcoded local data
+- Get Contacts, Loading Spinner, move the ContactFilter to other file, some fixes, and Clear Contacts
+- Fix DeleteContact now to work with MongoDB backend.  And some other UI fixes
+- fixed an issue that page refresh kept redirecting to Login page - was an error with the `loading: false` default state.
+- modify the Delete and Update contact options to work with the API/MongoDB
 
 ## Errors/Warnings Log with solutions
 ### mongoose
