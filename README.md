@@ -1,6 +1,6 @@
 # contact-keeper
 
-Contact Keeper app based on Brad Traversy's course React Front To Back 2019
+Contact Keeper [MongoDB, Express, React, NodeJS]
 
 ## Get Started
 
