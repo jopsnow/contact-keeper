@@ -10,7 +10,7 @@ Contact Keeper [MongoDB, Express, React, NodeJS]
 ## TODO
 
 - Move all references of `process.env` to something like `config/index.js` or something else.
-- Why does the JWT token always say "Invalid Signature" when checked at https://jwt.io ? Brad's does the same
+- Why does the JWT token always say "Invalid Signature"
 
 ## Outline
 
